@@ -2,6 +2,9 @@ package org.example.statistic;
 
 import java.util.List;
 
+/**
+ * Класс для хранения и подсчета статистики за месяц
+ */
 public class MonthStatistic {
     private String monthName;
     private List<DayStatistic> dayStatisticList;

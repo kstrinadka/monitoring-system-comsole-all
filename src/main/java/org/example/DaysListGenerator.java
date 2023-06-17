@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, который генерирует все дни указанного года
+ */
 public class DaysListGenerator {
 
     /**

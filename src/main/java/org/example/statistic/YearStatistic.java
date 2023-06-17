@@ -3,6 +3,9 @@ package org.example.statistic;
 
 import java.util.List;
 
+/**
+ * Класс для хранения и подсчета статистики за год
+ */
 public class YearStatistic {
 
     private String yearName;

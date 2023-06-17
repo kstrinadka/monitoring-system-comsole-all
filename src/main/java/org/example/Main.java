@@ -17,26 +17,14 @@ public class Main {
         // создали список всех дней в году
         List<LocalDate> listOfDays = DaysListGenerator.generateDaysInYearList(2023);
 
-//        for (LocalDate day: listOfDays) {
-//            System.out.println(day);
-//        }
-
         // создали генератор будет создавать нашу статистику
         YearStatisticGenerator yearStatisticGenerator = new YearStatisticGenerator();
 
         // создали статистику на все дни в году
         List<DayStatistic> allDaysStatisticList = yearStatisticGenerator.generateAllDaysStatisticList(listOfDays);
 
-//        for (DayStatistic dayStatistic: allDaysStatisticList) {
-//            System.out.println(dayStatistic);
-//        }
-
         // создали статистику по месяцам из статистики на все дни в году
         List<MonthStatistic> allMonthsStatisticList = yearStatisticGenerator.generateAllMonthsStatisticList(allDaysStatisticList);
-
-//        for (MonthStatistic month: allMonthsStatisticList) {
-//            System.out.println(month);
-//        }
 
         // создали статистику за год из статистики за все месяца
         YearStatistic yearStatistic1 = yearStatisticGenerator.generateYearStatistic(allMonthsStatisticList, yearString);
