@@ -1,12 +1,11 @@
 package org.example;
 
-
 import java.util.Random;
 
 /**
  * Генерирует случайное число (количество продаж в день)
  */
-public class OneDayGenerator {
+public class OneDayStatisticGenerator {
 
     private final Integer period = 3;             // задает промежуток для генерации дополнительного количества продаж (раз в period дней)
     private Integer counter;                // счетчик, который нужнен, чтобы каждые period дней генерировать большее случайное число
@@ -14,11 +13,10 @@ public class OneDayGenerator {
     private Integer lowerBound = 2;         // нижняя граница случайного числа
     private Integer higherBound = 4;        // верхняя граница случайного числа
 
-
     /**
      * Конструктор генератора продаж с дефолтными значениями границ генерации продаж
      */
-    public OneDayGenerator () {
+    public OneDayStatisticGenerator() {
         this.counter = 0;
         this.randomGenerator = new Random();
     }
@@ -28,15 +26,16 @@ public class OneDayGenerator {
      * @param lowerBound - нижняя граница
      * @param higherBound - верхняя граница
      */
-    public OneDayGenerator(Integer lowerBound, Integer higherBound) {
+    public OneDayStatisticGenerator(Integer lowerBound, Integer higherBound) {
         this.counter = 0;
         this.randomGenerator =  new Random();
         this.lowerBound = lowerBound;
         this.higherBound = higherBound;
     }
 
+
     /**
-     * Главный метод, который возвращает количество продаж для дня
+     * Возвращает случайно количество продаж в зависимости от того, какой это по счету день
      */
     public Integer generateNumberOfSales() {
         Integer numberOfSales = this.generateRandomNumber();
@@ -61,6 +60,5 @@ public class OneDayGenerator {
         Integer range = this.higherBound - this.lowerBound + 1;
         return this.randomGenerator.nextInt(range) + this.lowerBound;
     }
-
 
 }

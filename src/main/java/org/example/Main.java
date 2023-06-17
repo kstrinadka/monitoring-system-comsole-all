@@ -1,18 +1,49 @@
 package org.example;
 
+import org.example.statistic.DayStatistic;
+import org.example.statistic.MonthStatistic;
+import org.example.statistic.ResultStatisticWriter;
+import org.example.statistic.YearStatistic;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
-//        StatisticCounter.writeAllDaysInYear(2023);
+        Integer year = 2023;
+        String yearString = year.toString();
 
-        List<LocalDate> listOfDays = StatisticCounter.generateDaysInYearList(2023);
+        // создали список всех дней в году
+        List<LocalDate> listOfDays = DaysListGenerator.generateDaysInYearList(2023);
 
-        for (LocalDate day: listOfDays) {
-            System.out.println(day);
-        }
+//        for (LocalDate day: listOfDays) {
+//            System.out.println(day);
+//        }
+
+        // создали генератор будет создавать нашу статистику
+        YearStatisticGenerator yearStatisticGenerator = new YearStatisticGenerator();
+
+        // создали статистику на все дни в году
+        List<DayStatistic> allDaysStatisticList = yearStatisticGenerator.generateAllDaysStatisticList(listOfDays);
+
+//        for (DayStatistic dayStatistic: allDaysStatisticList) {
+//            System.out.println(dayStatistic);
+//        }
+
+        // создали статистику по месяцам из статистики на все дни в году
+        List<MonthStatistic> allMonthsStatisticList = yearStatisticGenerator.generateAllMonthsStatisticList(allDaysStatisticList);
+
+//        for (MonthStatistic month: allMonthsStatisticList) {
+//            System.out.println(month);
+//        }
+
+        // создали статистику за год из статистики за все месяца
+        YearStatistic yearStatistic1 = yearStatisticGenerator.generateYearStatistic(allMonthsStatisticList, yearString);
+
+        // печатаем статистику
+        ResultStatisticWriter resultStatisticWriter = new ResultStatisticWriter(yearStatistic1);
+        resultStatisticWriter.writeAllStatistic();
+
     }
 }
