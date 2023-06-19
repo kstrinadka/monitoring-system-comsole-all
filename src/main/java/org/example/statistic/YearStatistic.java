@@ -12,6 +12,8 @@ public class YearStatistic {
     private List<MonthStatistic> monthStatisticList;
     private Integer outOfStockDays;
     private Integer outOfStockNumber;
+    private Integer soldCount;              // сколько продано товара за год
+    private Integer price = 150;            // цена товара
 
 
     public YearStatistic(String yearName, List<MonthStatistic> monthStatisticList) {
@@ -20,15 +22,31 @@ public class YearStatistic {
         this.calculateStatistic();
     }
 
+    /**
+     * Рассчитывает итоговую статистику за год по месяцам
+     */
     private void calculateStatistic() {
         this.outOfStockDays = 0;
         this.outOfStockNumber = 0;
+        this.soldCount = 0;
         for (MonthStatistic month: monthStatisticList) {
+            this.soldCount += month.getSoldCount();
             if (month.getOutOfStockNumber() > 0) {
                 this.outOfStockNumber += month.getOutOfStockNumber();
                 this.outOfStockDays += month.getOutOfStockDays();
             }
         }
+    }
+
+    /**
+     * Получить сумму продаж за текущий месяц
+     */
+    public Integer getSalesSum() {
+        return this.soldCount * this.price;
+    }
+
+    public Integer getPrice() {
+        return price;
     }
 
     public String getYearName() {

@@ -12,6 +12,8 @@ import java.time.LocalDate;
  * wantToBuy - количество товара, которое хотели купить в этот день покупатели, но данный товар закончился на складе.
  */
 public class DayStatistic {
+
+    private Integer price = 150;          // цена товара
     private LocalDate day;          // просто название дня (число)
     private Integer soldCount;      // сколько единиц товара купили в этот день
     private Integer rest;           // остаток в конце дня после продаж
@@ -22,6 +24,7 @@ public class DayStatistic {
         this.soldCount = soldCount;
         this.rest = rest;
         this.wantTobuy = wantTobuy;
+        this.price = price;
     }
 
     public LocalDate getDay() {
@@ -38,6 +41,17 @@ public class DayStatistic {
 
     public Integer getWantTobuy() {
         return wantTobuy;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    /**
+     * Получить сумму продаж за текущий день
+     */
+    public Integer getSalesSum() {
+        return this.soldCount * this.price;
     }
 
     @Override

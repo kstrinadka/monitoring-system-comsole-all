@@ -26,8 +26,11 @@ public class ResultStatisticWriter {
     public void writeYearStatistic() {
         System.out.println();
         System.out.println("Статистика за " + yearStatistic.getYearName() + " год: ");
+        System.out.println("Цена товара: " + yearStatistic.getPrice() + " руб");
+        System.out.println("Сумма продаж за год: " + yearStatistic.getSalesSum() + " руб");
         System.out.println("Количество out of stock дней за год: " + yearStatistic.getOutOfStockDays());
         System.out.println("Количество out of stock непроданных товаров за год: " + yearStatistic.getOutOfStockNumber());
+        System.out.println("Сумма цены на по out of stock товарам: " + yearStatistic.getPrice() * yearStatistic.getOutOfStockNumber() + " руб");
 
         for (MonthStatistic month: yearStatistic.getMonthStatisticList()) {
             writeMonthStatistic(month);
